@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::body})}">
+<head>
+    <title>Formulario de Modelo</title>
+</head>
+<body>
+<div class="container">
+    <h1>Formulario de Modelo</h1>
+    <form th:action="@{/modelos/guardar}" th:object="${modelo}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" th:field="*{nombre}" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a th:href="@{/modelos}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

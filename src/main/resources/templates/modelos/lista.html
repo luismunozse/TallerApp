@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::body})}">
+<head>
+    <title>Lista de Modelos</title>
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Modelos</h1>
+    <a th:href="@{/modelos/nuevo}" class="btn btn-primary">Nuevo Modelo</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="modelo : ${modelos}">
+            <td th:text="${modelo.id}"></td>
+            <td th:text="${modelo.nombre}"></td>
+            <td>
+                <a th:href="@{/modelos/editar/{id}(id=${modelo.id})}" class="btn btn-sm btn-warning">Editar</a>
+                <a th:href="@{/modelos/eliminar/{id}(id=${modelo.id})}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

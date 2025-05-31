@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::body})}">
+<head>
+    <title>Lista de Marcas</title>
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Marcas</h1>
+    <a th:href="@{/marcas/nuevo}" class="btn btn-primary">Nueva Marca</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="marca : ${marcas}">
+            <td th:text="${marca.id}"></td>
+            <td th:text="${marca.nombre}"></td>
+            <td>
+                <a th:href="@{/marcas/editar/{id}(id=${marca.id})}" class="btn btn-sm btn-warning">Editar</a>
+                <a th:href="@{/marcas/eliminar/{id}(id=${marca.id})}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

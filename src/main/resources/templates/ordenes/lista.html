@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::body})}">
+<head>
+    <title>Lista de Órdenes de Servicio</title>
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Órdenes de Servicio</h1>
+    <a th:href="@{/ordenes/nuevo}" class="btn btn-primary">Nueva Orden de Servicio</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Fecha de Creación</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="orden : ${ordenes}">
+            <td th:text="${orden.id}"></td>
+            <td th:text="${orden.cliente.nombre}"></td>
+            <td th:text="${orden.fechaCreacion}"></td>
+            <td th:text="${orden.estado}"></td>
+            <td>
+                <a th:href="@{/ordenes/editar/{id}(id=${orden.id})}" class="btn btn-sm btn-warning">Editar</a>
+                <a th:href="@{/ordenes/eliminar/{id}(id=${orden.id})}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
